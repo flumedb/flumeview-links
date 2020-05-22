@@ -11,9 +11,8 @@ var u = require('./util')
 var isArray = Array.isArray
 // sorted index.
 
-// split this into TWO modules. flumeview-links and flumeview-query
-module.exports = function (indexes, links, version) {
-  if (!links) { links = function (data, emit) { emit(data) } }
+module.exports = function (indexes, emitLinks, version) {
+  if (!emitLinks) { emitLinks = function (data, emit) { emit(data) } }
 
   function getIndexes (data, seq) {
     var A = []
@@ -32,7 +31,7 @@ module.exports = function (indexes, links, version) {
 
   var create = FlumeViewLevel(version || 1, function (value, seq) {
     var A = []
-    links(value, function (value) {
+    emitLinks(value, function (value) {
       A = A.concat(getIndexes(value, seq))
     })
     return A
@@ -67,7 +66,7 @@ module.exports = function (indexes, links, version) {
           }),
           Flatmap(function (data) {
             var emit = []
-            links(data, function (a) {
+            emitLinks(data, function (a) {
               emit.push(a)
             })
             return emit
