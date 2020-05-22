@@ -1,6 +1,6 @@
 {
   "name": "flumeview-links",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "flume view for tracking \"links\", based on flumeview-level",
   "main": "index.js",
   "scripts": {
