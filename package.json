@@ -1,0 +1,38 @@
+{
+  "name": "flumeview-links",
+  "version": "0.0.1",
+  "description": "flume view for tracking \"links\", based on flumeview-level",
+  "main": "index.js",
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flumedb/flumeview-links.git"
+  },
+  "keywords": [
+    "flumedb",
+    "view"
+  ],
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flumedb/flumeview-links/issues"
+  },
+  "homepage": "https://github.com/flumedb/flumeview-links#readme",
+  "dependencies": {
+    "deep-equal": "^2.0.3",
+    "flumeview-level": "^3.0.14",
+    "map-filter-reduce": "^3.2.2",
+    "pull-flatmap": "0.0.1",
+    "pull-stream": "^3.6.14"
+  },
+  "devDependencies": {
+    "flumedb": "^2.1.1",
+    "flumelog-offset": "^3.4.4",
+    "level-codec": "^9.0.1",
+    "osenv": "^0.1.5",
+    "rimraf": "^3.0.2",
+    "tape": "^5.0.0"
+  }
+}
