@@ -22,13 +22,13 @@
   "homepage": "https://github.com/flumedb/flumeview-links#readme",
   "dependencies": {
     "deep-equal": "^2.0.3",
-    "flumeview-level": "^3.0.14",
+    "flumeview-level": "^4.0.0",
     "map-filter-reduce": "^3.2.2",
     "pull-flatmap": "0.0.1",
     "pull-stream": "^3.6.14"
   },
   "devDependencies": {
-    "flumedb": "^2.1.1",
+    "flumedb": "^2.1.4",
     "flumelog-offset": "^3.4.4",
     "level-codec": "^9.0.1",
     "osenv": "^0.1.5",
