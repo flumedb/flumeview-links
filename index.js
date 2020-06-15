@@ -29,7 +29,7 @@ module.exports = function (indexes, emitLinks, version) {
     return A
   }
 
-  var create = FlumeViewLevel(version || 1, function (value, seq) {
+  var create = FlumeViewLevel(version || 2, function (value, seq) {
     var A = []
     emitLinks(value, function (value) {
       A = A.concat(getIndexes(value, seq))

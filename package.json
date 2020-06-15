@@ -22,7 +22,7 @@
   "homepage": "https://github.com/flumedb/flumeview-links#readme",
   "dependencies": {
     "deep-equal": "^2.0.3",
-    "flumeview-level": "^4.0.0",
+    "flumeview-level": "^4.0.3",
     "map-filter-reduce": "^3.2.2",
     "pull-flatmap": "0.0.1",
     "pull-stream": "^3.6.14"
