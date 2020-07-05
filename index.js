@@ -39,14 +39,30 @@ module.exports = function (indexes, emitLinks, version) {
 
   return function (log, name) {
     var index = create(log, name)
-    var read = index.read
+    var _read = index.read
 
-    index.read = function (opts) {
-      opts = opts || {}
+    index.methods.explain = 'async'
+    index.explain = function (opts = {}, cb) {
       var q, sort
+      if (isArray(opts.query)) {
+        q = opts.query[0].$filter || {}
+        sort = opts.query[opts.query.length - 1].$sort
+        if (sort) opts.query.pop()
+      } else if (opts.query) {
+        q = opts.query
+      } else { q = {} }
 
-      opts = opts || {}
+      var index = sort ? u.findByPath(indexes, sort) : select(indexes, q)
 
+      if (sort && !index) return cb(new Error('could not sort by:' + JSON.stringify(sort)))
+
+      return cb(null, {
+        index
+      })
+    }
+
+    index.read = function (opts = {}) {
+      var q, sort
       if (isArray(opts.query)) {
         q = opts.query[0].$filter || {}
         sort = opts.query[opts.query.length - 1].$sort
@@ -86,7 +102,7 @@ module.exports = function (indexes, emitLinks, version) {
       _opts.unlinkedValues = opts.unlinkedValues
 
       return pull(
-        read(_opts),
+        _read(_opts),
         pull.map(function (data) {
           if (data.sync) return data
           var o = opts.unlinkedValues ? data.value : {}

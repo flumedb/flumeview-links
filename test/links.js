@@ -106,6 +106,15 @@ tape('simple', function (t) {
     })
   })
 
+  t.test('explain index', function (t) {
+    links.explain({ query: [{ $filter: { rel: { $prefix: 'e' } } }] }, function (err, data) {
+      if (err) throw err
+
+      t.deepEqual(data.index, { key: 'RDS', value: ['rel', 'dest', 'source'] }, 'explain shows index being selected')
+      t.end()
+    })
+  })
+
   t.test('live', function (t) {
     t.deepEqual(live, raw.filter(function (e) { return e.rel[0] == 'e' }))
     // [{

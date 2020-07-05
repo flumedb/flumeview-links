@@ -16,11 +16,15 @@ index will rebuild.
 
 Here we use the name "links", you can use any name.
 
-### flumedb.links.read({query: MFR_query, limit, reverse, live, old, unlinkedValues})
+### flumedb.links.read({query: MFR_query, limit, reverse, live, old, unlinkedValues}) => source
 
 Perform the query! limit, reverse, live, old are stardard as with
 other flume streams. `unlinkedValues` is an option that can be used to
 include the values not part of the index in the return value.
+
+### flumedb.links.explain({query: MFR_query, limit, reverse, live, old, unlinkedValues}, cb)
+
+Right now only calls back with `{ index }` - the index your example query would use (if any)
 
 ## License
 
